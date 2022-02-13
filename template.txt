@@ -1,0 +1,76 @@
+LAYOUT,VERTICAL
+
+TYPE,NOTE,nt
+nt,LABEL,You must use either your Camera or enter a file to run commands
+
+TYPE,CHECKBOX,cameraOn
+cameraOn,LABEL,Turn Camera On
+
+TYPE,TEXT,fileName
+fileName,LABEL,File Name
+
+TYPE,BUTTON,init
+init,LABEL,Initialize
+
+TYPE,BUTTON,faceRecognition
+faceRecognition,LABEL,Face Recognition
+
+TYPE,DROPDOWN,object
+object,LABEL,Object to detet
+object,OPTION,clock,Clock
+object,OPTION,eye,Eye
+object,OPTION,mouth,Mouth
+object,OPTION,nose,Nose
+object,OPTION,upperBody,Upper Body
+object,OPTION,lowerBody,Lower Body
+object,OPTION,rightEar,Right Ear
+
+TYPE,RANGE,brightness
+brightness,LABEL,Brightness
+brightness,MIN,-255
+brightness,MAX,255
+brightness,STEP,1
+brightness,VALUE,50
+
+TYPE,BUTTON,adjustBrightness
+adjustBrightness,LABEL,Adjust Brightness
+
+TYPE,DROPDOWN,filter
+filter,LABEL,Filter Type
+filter,OPTION,t,threshol
+filter,OPTION,b,blur
+filter,OPTION,a,adaptive
+
+TYPE,BUTTON,imageFilter
+imageFilter,LABEL,Image Filter
+
+TYPE,BUTTON,findContours
+findContours,LABEL,Find Contours
+
+TYPE,DROPDOWN,filterType
+filterType,LABEL,Filter Type
+filterType,OPTION,canny,Canny
+filterType,OPTION,scharr,Scharr
+filterType,OPTION,sobel,Sobel
+
+TYPE,BUTTON,findEdges
+findEdges,LABEL,Find Edges
+
+TYPE,BUTTON,findLines
+findLines,LABEL,Find Lines (using Hough line detection)
+
+TYPE,BUTTON,backgroundSubtraction
+backgroundSubtraction,LABEL,Background Subtration
+
+TYPE,DROPDOWN,colorType
+colorType,LABEL,Color Type
+colorType,OPTION,R,Red
+colorType,OPTION,G,Green
+colorType,OPTION,B,Blue
+colorType,OPTION,H,Hue
+colorType,OPTION,S,Saturation
+colorType,OPTION,V,Value Channels
+
+TYPE,BUTTON,colorChannels
+colorChannels,LABEL,Color Channels
+
