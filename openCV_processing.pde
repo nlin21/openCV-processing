@@ -51,11 +51,9 @@ void draw() {
       initialized = true;
     }
   }
-  //println(initialized);
   if (!initialized) {
     return;
   }
-  println(useCamera);
   if (useCamera) {
     if(video.available()){
       image(video, 0, 0);
