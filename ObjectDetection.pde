@@ -1,6 +1,14 @@
 Rectangle[] objects;
 
 void ObjectDetection(String objectToDetect) {
+  opencv.useColor();
+  
+  if (useCamera) {
+    opencv.loadImage(video);
+  } else {
+    opencv.loadImage(image);
+  }
+  
   if (objectToDetect.equals("face")) {
     opencv.loadCascade(OpenCV.CASCADE_FRONTALFACE);
   } else if (objectToDetect.equals("eye")) {
@@ -13,8 +21,7 @@ void ObjectDetection(String objectToDetect) {
     opencv.loadCascade(OpenCV.CASCADE_RIGHT_EAR);
   }
   
-  opencv.loadImage(video);
-  image(video,0,0);
+  image(opencv.getOutput(),0,0);
   
   objects = opencv.detect();
   
