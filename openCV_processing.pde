@@ -85,7 +85,8 @@ void draw() {
     String objectToDetect = brcValue("object");
     ObjectDetection(objectToDetect);
   } else if (featureUsed == Feature.ADJUST_BRIGHTNESS) {
-    //brightnessAdjust(int(brcValue("brightness")));
+    int brightnessOffset = int(brcValue("brightness"));
+    AdjustBrightness(brightnessOffset);
   } else if (featureUsed == Feature.IMAGE_FILTER) {
     if (useCamera) {
       opencv.loadImage(video);
