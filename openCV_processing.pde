@@ -61,7 +61,6 @@ void draw() {
       image(video, 0, 0);
       video.read();
     }
-    
   } else {
     image(image, 0, 0);
   }
