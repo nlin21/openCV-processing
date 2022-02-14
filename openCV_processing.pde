@@ -28,7 +28,7 @@ void setup() {
   frameRate(60);
   useCamera = false;
   opencv = new OpenCV(this, width, height);
-
+  brcShowMessages(true);
   featureUsed = Feature.NONE;
 }
 
@@ -36,7 +36,8 @@ void draw() {
   brc();
   String changed = brcChanged();
   if (changed.equals("init")) {
-    if (brcValue("cameraOn").equals("True")) {
+    //println(brcValue("cameraOn"));
+    if (brcValue("cameraOn").equals("true")) {
       video = new Capture(this, Capture.list()[0]);
       video.start();
       video.resize(width, height);
@@ -50,12 +51,17 @@ void draw() {
       initialized = true;
     }
   }
+  //println(initialized);
   if (!initialized) {
     return;
   }
+  println(useCamera);
   if (useCamera) {
-    image(video, 0, 0);
-    video.read();
+    if(video.available()){
+      image(video, 0, 0);
+      video.read();
+    }
+    
   } else {
     image(image, 0, 0);
   }
