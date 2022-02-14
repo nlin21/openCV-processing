@@ -1,7 +1,7 @@
 LAYOUT,VERTICAL
 
-TYPE,NOTE,nt
-nt,LABEL,You must use either your Camera or enter a file to run commands
+TYPE,NOTE,nt1
+nt1,LABEL,You must use either your Camera or enter a file to run commands
 
 TYPE,CHECKBOX,cameraOn
 cameraOn,LABEL,Turn Camera On
@@ -12,11 +12,11 @@ fileName,LABEL,File Name
 TYPE,BUTTON,init
 init,LABEL,Initialize
 
-TYPE,BUTTON,faceRecognition
-faceRecognition,LABEL,Face Recognition
+TYPE,NOTE,nt2
+nt2,LABEL,Object Recognition
 
 TYPE,DROPDOWN,object
-object,LABEL,Object to detet
+object,LABEL,Object to Detect
 object,OPTION,clock,Clock
 object,OPTION,eye,Eye
 object,OPTION,mouth,Mouth
@@ -24,6 +24,12 @@ object,OPTION,nose,Nose
 object,OPTION,upperBody,Upper Body
 object,OPTION,lowerBody,Lower Body
 object,OPTION,rightEar,Right Ear
+
+TYPE,BUTTON,faceRecognition
+faceRecognition,LABEL,Object Recognition
+
+TYPE,NOTE,nt3
+nt3,LABEL,brightness
 
 TYPE,RANGE,brightness
 brightness,LABEL,Brightness
@@ -35,6 +41,9 @@ brightness,VALUE,50
 TYPE,BUTTON,adjustBrightness
 adjustBrightness,LABEL,Adjust Brightness
 
+TYPE,NOTE,nt4
+nt4,LABEL,Image Filtering
+
 TYPE,DROPDOWN,filter
 filter,LABEL,Filter Type
 filter,OPTION,t,threshold
@@ -43,37 +52,46 @@ filter,OPTION,a,adaptive
 
 TYPE,RANGE,thresholdValue
 thresholdValue,LABEL,Threshold Value
-thresholdValue,MIN,0
+thresholdValue,MIN,1
 thresholdValue,MAX,255
 thresholdValue,STEP,1
 thresholdValue,VALUE,80
 
 TYPE,RANGE,blurValue
 blurValue,LABEL,Blur Amount
-blurValue,MIN,0
+blurValue,MIN,1
 blurValue,MAX,255
 blurValue,STEP,1
 blurValue,VALUE,50
 
 TYPE,RANGE,adaptiveBlockSize
 adaptiveBlockSize,LABEL,Adaptive Block Size
-adaptiveBlockSize,MIN,0
+adaptiveBlockSize,MIN,1
 adaptiveBlockSize,MAX,255
 adaptiveBlockSize,STEP,1
 adaptiveBlockSize,VALUE,50
 
 TYPE,RANGE,adaptiveConstant
 adaptiveConstant,LABEL,Adaptive Constant
-adaptiveConstant,MIN,0
+adaptiveConstant,MIN,1
 adaptiveConstant,MAX,255
 adaptiveConstant,STEP,1
 adaptiveConstant,VALUE,50
 
+TYPE,NOTE,nt5
+nt5,LABEL,Image Filtering
+
 TYPE,BUTTON,imageFilter
 imageFilter,LABEL,Image Filter
 
+TYPE,NOTE,nt6
+nt6,LABEL,Finding Contours
+
 TYPE,BUTTON,findContours
 findContours,LABEL,Find Contours
+
+TYPE,NOTE,nt7
+nt7,LABEL,Edge Finder
 
 TYPE,DROPDOWN,filterType
 filterType,LABEL,Filter Type
@@ -84,11 +102,31 @@ filterType,OPTION,sobel,Sobel
 TYPE,BUTTON,findEdges
 findEdges,LABEL,Find Edges
 
+TYPE,NOTE,nt8
+nt8,LABEL,Find Lines using Hough line Detection
+
 TYPE,BUTTON,findLines
-findLines,LABEL,Find Lines (using Hough line detection)
+findLines,LABEL,Find Lines
+
+TYPE,NOTE,nt9
+nt9,LABEL,Background Subtraction
+
+TYPE,DROPDOWN,imageSource
+imageSource,LABEL,Image Source for Background Subtraction
+imageSource,OPTION,M,Movie
+imageSource,OPTION,C,Camera
+imageSource,OPTION,I,Image
+
+TYPE,DROPDOWN,movie
+movie,LABEL,Movie Type
+movie,OPTION,U,Ur Mom
+movie,OPTION,A,A movie
 
 TYPE,BUTTON,backgroundSubtraction
 backgroundSubtraction,LABEL,Background Subtration
+
+TYPE,NOTE,nt10
+nt10,LABEL,Color Channeling
 
 TYPE,DROPDOWN,colorType
 colorType,LABEL,Color Type
