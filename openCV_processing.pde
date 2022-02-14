@@ -2,7 +2,6 @@ import gab.opencv.*;
 import processing.video.*;
 import java.awt.*;
 
-//test
 Capture video;
 PImage image;
 OpenCV opencv;
@@ -37,7 +36,6 @@ void draw() {
   brc();
   String changed = brcChanged();
   if (changed.equals("init")) {
-    //println(brcValue("cameraOn"));
     if (brcValue("cameraOn").equals("true")) {
       video = new Capture(this, Capture.list()[0]);
       video.start();
