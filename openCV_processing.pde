@@ -15,9 +15,9 @@ public enum Feature {
   OBJECT_RECOGNITION, // check
     ADJUST_BRIGHTNESS, // check
     IMAGE_FILTER, // check
-    FIND_CONTOURS, 
+    FIND_CONTOURS, //check
     FIND_EDGES, // check
-    FIND_LINES,
+    FIND_LINES, //check
     BACKGROUND_SUBTRACTION, // check
     COLOR_CHANNELS,
     NONE
@@ -70,6 +70,8 @@ void draw() {
     featureUsed = Feature.IMAGE_FILTER;
   } else if (changed.equals("findEdges")) {
     featureUsed = Feature.FIND_EDGES;
+  } else if (changed.equals("findContours")) {
+    featureUsed = Feature.FIND_CONTOURS;
   } else if (changed.equals("findLines")) {
     featureUsed = Feature.FIND_LINES;
   } else if (changed.equals("backgroundSubtraction")) {
@@ -91,6 +93,13 @@ void draw() {
       opencv.loadImage(image);
     }
     filterImage(brcValue("filter"));
+  } else if (featureUsed == Feature.FIND_CONTOURS) {
+    if (useCamera) {
+      opencv.loadImage(video);
+    } else {
+      opencv.loadImage(image);
+    }
+    findContours(int(brcValue("contourThreshold")));
   } else if (featureUsed == Feature.FIND_EDGES) {
     if (useCamera) {
       opencv.loadImage(video);
@@ -99,7 +108,12 @@ void draw() {
     }
     findEdges(brcValue("filterType"));
   } else if (featureUsed == Feature.FIND_LINES) {
-    //findLines();
+    if (useCamera) {
+      opencv.loadImage(video);
+    } else {
+      opencv.loadImage(image);
+    }
+    findLines(int(brcValue("findLinesThreshold")), int(brcValue("findLinesMinLength")), int(brcValue("findLinesMaxLineGap")));
   } else if (featureUsed == Feature.BACKGROUND_SUBTRACTION) {
     Movie movie = new Movie(this, "street.mov");
     opencv = new OpenCV(this, 720, 480);

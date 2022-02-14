@@ -90,6 +90,13 @@ nt6,LABEL,Finding Contours
 TYPE,BUTTON,findContours
 findContours,LABEL,Find Contours
 
+TYPE,RANGE,contourThreshold
+contourThreshold,LABEL,Contour Threshold
+contourThreshold,MIN,1
+contourThreshold,MAX,255
+contourThreshold,STEP,1
+contourThreshold,VALUE,80
+
 TYPE,NOTE,nt7
 nt7,LABEL,Edge Finder
 
@@ -107,6 +114,27 @@ nt8,LABEL,Find Lines using Hough line Detection
 
 TYPE,BUTTON,findLines
 findLines,LABEL,Find Lines
+
+TYPE,RANGE,findLinesThreshold
+findLinesThreshold,LABEL,Threshold
+findLinesThreshold,MIN,1
+findLinesThreshold,MAX,255
+findLinesThreshold,STEP,1
+findLinesThreshold,VALUE,100
+
+TYPE,RANGE,findLinesMinLength
+findLinesMinLength,LABEL,Minimum Length
+findLinesMinLength,MIN,10
+findLinesMinLength,MAX,100
+findLinesMinLength,STEP,1
+findLinesMinLength,VALUE,30
+
+TYPE,RANGE,findLinesMaxLineGap
+findLinesMaxLineGap,LABEL,Maximum Line Gap
+findLinesMaxLineGap,MIN,10
+findLinesMaxLineGap,MAX,100
+findLinesMaxLineGap,STEP,1
+findLinesMaxLineGap,VALUE,20
 
 TYPE,NOTE,nt9
 nt9,LABEL,Background Subtraction
