@@ -25,7 +25,7 @@ public enum Feature {
 }
 
 void setup() {
-  size(800, 800);
+  size(640, 480);
   frameRate(60);
   useCamera = false;
   opencv = new OpenCV(this, width, height);
