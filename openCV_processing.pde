@@ -44,7 +44,7 @@ void draw() {
       initialized = true;
       useCamera = true;
     } else if (!brcValue("fileName").equals("")) {
-      image = loadImage(brcValue("fileName"), 0, 0);
+      image = loadImage(brcValue("fileName"));
       image.resize(width, height);
 
       initialized = true;
