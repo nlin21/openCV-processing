@@ -15,10 +15,10 @@ public enum Feature {
   OBJECT_RECOGNITION, // check
     ADJUST_BRIGHTNESS, // check
     IMAGE_FILTER, // check
-    FIND_CONTOURS, // check
-    FIND_EDGES,
+    FIND_CONTOURS, 
+    FIND_EDGES, // check
     FIND_LINES,
-    BACKGROUND_SUBTRACTION,
+    BACKGROUND_SUBTRACTION, // check
     COLOR_CHANNELS,
     NONE
 }
@@ -99,7 +99,12 @@ void draw() {
   } else if (featureUsed == Feature.FIND_LINES) {
     //findLines();
   } else if (featureUsed == Feature.BACKGROUND_SUBTRACTION) {
-    //backgroundSubtraction();
+    Movie movie = new Movie(this, "street.mov");
+    opencv = new OpenCV(this, 720, 480);
+    opencv.startBackgroundSubtraction(5, 3, 0.5);
+    movie.loop();
+    movie.play();
+    backgroundSubtraction();
   } else if (featureUsed == Feature.COLOR_CHANNELS) {
     //colorChannels(brcValue("colorType"));
   }
