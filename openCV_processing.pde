@@ -83,7 +83,7 @@ void draw() {
 
   if (featureUsed == Feature.OBJECT_RECOGNITION) {
     String objectToDetect = brcValue("object");
-    //imgDetection(objectToDetect);
+    ObjectDetection(objectToDetect);
   } else if (featureUsed == Feature.ADJUST_BRIGHTNESS) {
     //brightnessAdjust(int(brcValue("brightness")));
   } else if (featureUsed == Feature.IMAGE_FILTER) {

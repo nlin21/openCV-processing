@@ -17,12 +17,10 @@ nt2,LABEL,Object Recognition
 
 TYPE,DROPDOWN,object
 object,LABEL,Object to Detect
-object,OPTION,clock,Clock
+object,OPTION,face,Face
 object,OPTION,eye,Eye
 object,OPTION,mouth,Mouth
 object,OPTION,nose,Nose
-object,OPTION,upperBody,Upper Body
-object,OPTION,lowerBody,Lower Body
 object,OPTION,rightEar,Right Ear
 
 TYPE,BUTTON,faceRecognition

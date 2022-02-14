@@ -3,10 +3,10 @@ import processing.net.*;
 Server BRCServer;
 
 int BRC_port = 10002;
-int BRC_WebBodySize = 16407;
+int BRC_WebBodySize = 16295;
 
 String[] BRC_ids = new String[] {"cameraOn","fileName","init","object","faceRecognition","brightness","adjustBrightness","filter","thresholdValue","blurValue","adaptiveBlockSize","adaptiveConstant","imageFilter","findContours","contourThreshold","filterType","findEdges","findLines","findLinesThreshold","findLinesMinLength","findLinesMaxLineGap","imageSource","movie","backgroundSubtraction","colorType","colorChannels"};
-String[] BRC_values = new String[] {"false","","0","clock","0","50","0","t","80","50","50","50","0","0","80","canny","0","0","100","30","20","M","U","0","R","0"};
+String[] BRC_values = new String[] {"false","","0","face","0","50","0","t","80","50","50","50","0","0","80","canny","0","0","100","30","20","M","U","0","R","0"};
 
 String[] BRC_Monitors = new String[] {};
 String[] BRC_MonitorValues = new String[] {};
@@ -402,12 +402,10 @@ String BRC_WebBody =
 + "\n"
 + "<table ><tr><td class=\"auto-style1\">Object to Detect:&nbsp;&nbsp;&nbsp;\n"
 + "<select name=\"brc_6\" id=\"brc_6\" onchange=\"SendNameValue('object='+document.brc.brc_6.value);\">\n"
-+ "<option selected=\"selected\" value=\"clock\">Clock</option>\n"
++ "<option selected=\"selected\" value=\"face\">Face</option>\n"
 + "<option  value=\"eye\">Eye</option>\n"
 + "<option  value=\"mouth\">Mouth</option>\n"
 + "<option  value=\"nose\">Nose</option>\n"
-+ "<option  value=\"upperBody\">Upper Body</option>\n"
-+ "<option  value=\"lowerBody\">Lower Body</option>\n"
 + "<option  value=\"rightEar\">Right Ear</option>\n"
 + "</select></td></tr></table>\n"
 + "\n"
@@ -555,3 +553,4 @@ void brcSendWebpage(Client client) {
     String WebPage = head1+str(BRC_WebBody.length())+head2+BRC_WebBody;
     client.write(WebPage);
 }
+
