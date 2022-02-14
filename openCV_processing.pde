@@ -12,10 +12,10 @@ boolean useCamera;
 Feature featureUsed;
 
 public enum Feature {
-    OBJECT_RECOGNITION,
-    ADJUST_BRIGHTNESS,
-    IMAGE_FILTER,
-    FIND_CONTOURS,
+  OBJECT_RECOGNITION, // check
+    ADJUST_BRIGHTNESS, // check
+    IMAGE_FILTER, // check
+    FIND_CONTOURS, // check
     FIND_EDGES,
     FIND_LINES,
     BACKGROUND_SUBTRACTION,
@@ -28,7 +28,7 @@ void setup() {
   frameRate(60);
   useCamera = false;
   opencv = new OpenCV(this, width, height);
-  
+
   featureUsed = Feature.NONE;
 }
 
@@ -76,7 +76,7 @@ void draw() {
     featureUsed = Feature.COLOR_CHANNELS;
   }
   // run desired feature
-  
+
   if (featureUsed == Feature.OBJECT_RECOGNITION) {
     String objectToDetect = brcValue("object");
     //imgDetection(objectToDetect);
@@ -90,7 +90,12 @@ void draw() {
     }
     filterImage(brcValue("filter"));
   } else if (featureUsed == Feature.FIND_EDGES) {
-    //findEdges(brcValue("filterType"));
+    if (useCamera) {
+      opencv.loadImage(video);
+    } else {
+      opencv.loadImage(image);
+    }
+    findEdges(brcValue("filterType"));
   } else if (featureUsed == Feature.FIND_LINES) {
     //findLines();
   } else if (featureUsed == Feature.BACKGROUND_SUBTRACTION) {
