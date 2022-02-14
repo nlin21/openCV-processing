@@ -3,10 +3,10 @@ import processing.net.*;
 Server BRCServer;
 
 int BRC_port = 10002;
-int BRC_WebBodySize = 16295;
+int BRC_WebBodySize = 15738;
 
-String[] BRC_ids = new String[] {"cameraOn","fileName","init","object","faceRecognition","brightness","adjustBrightness","filter","thresholdValue","blurValue","adaptiveBlockSize","adaptiveConstant","imageFilter","findContours","contourThreshold","filterType","findEdges","findLines","findLinesThreshold","findLinesMinLength","findLinesMaxLineGap","imageSource","movie","backgroundSubtraction","colorType","colorChannels"};
-String[] BRC_values = new String[] {"false","","0","face","0","50","0","t","80","50","50","50","0","0","80","canny","0","0","100","30","20","M","U","0","R","0"};
+String[] BRC_ids = new String[] {"cameraOn","fileName","init","object","faceRecognition","brightness","adjustBrightness","filter","thresholdValue","blurValue","adaptiveBlockSize","adaptiveConstant","imageFilter","findContours","contourThreshold","filterType","findEdges","findLines","findLinesThreshold","findLinesMinLength","findLinesMaxLineGap","imageSource","movie","backgroundSubtraction","colorChannels"};
+String[] BRC_values = new String[] {"false","","0","face","0","50","0","t","80","50","50","50","0","0","80","canny","0","0","100","30","20","M","U","0","0"};
 
 String[] BRC_Monitors = new String[] {};
 String[] BRC_MonitorValues = new String[] {};
@@ -317,8 +317,7 @@ String BRC_WebBody =
 + "[\"DROPDOWN\",\"brc_41\",\"movie\"],\n"
 + "[\"BUTTON\",\"brc_42\",\"backgroundSubtraction\"],\n"
 + "[\"NOTE\",\"brc_43\",\"nt10\"],\n"
-+ "[\"DROPDOWN\",\"brc_44\",\"colorType\"],\n"
-+ "[\"BUTTON\",\"brc_45\",\"colorChannels\"]];\n"
++ "[\"BUTTON\",\"brc_44\",\"colorChannels\"]];\n"
 + "\n"
 + "Monitor = false;\n"
 + "\n"
@@ -527,16 +526,6 @@ String BRC_WebBody =
 + "\n"
 + " <table><tr><td class=\"auto-style1\"><label id=\"brc_43\">Color Channeling</label></td></tr></table>\n"
 + "\n"
-+ "<table ><tr><td class=\"auto-style1\">Color Type:&nbsp;&nbsp;&nbsp;\n"
-+ "<select name=\"brc_44\" id=\"brc_44\" onchange=\"SendNameValue('colorType='+document.brc.brc_44.value);\">\n"
-+ "<option selected=\"selected\" value=\"R\">Red</option>\n"
-+ "<option  value=\"G\">Green</option>\n"
-+ "<option  value=\"B\">Blue</option>\n"
-+ "<option  value=\"H\">Hue</option>\n"
-+ "<option  value=\"S\">Saturation</option>\n"
-+ "<option  value=\"V\">Value Channels</option>\n"
-+ "</select></td></tr></table>\n"
-+ "\n"
 + "<input type=\"button\" name=\"<!--<id>-->\" id=\"<!--<id>-->\" value=\"Color Channels\" onClick=\"SendNameValue('colorChannels='+Math.floor(Math.random()*1000000));\" />\n"
 + "&nbsp;&nbsp;&nbsp;\n"
 + "\n"
@@ -553,4 +542,3 @@ void brcSendWebpage(Client client) {
     String WebPage = head1+str(BRC_WebBody.length())+head2+BRC_WebBody;
     client.write(WebPage);
 }
-

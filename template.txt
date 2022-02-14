@@ -154,15 +154,6 @@ backgroundSubtraction,LABEL,Background Subtration
 TYPE,NOTE,nt10
 nt10,LABEL,Color Channeling
 
-TYPE,DROPDOWN,colorType
-colorType,LABEL,Color Type
-colorType,OPTION,R,Red
-colorType,OPTION,G,Green
-colorType,OPTION,B,Blue
-colorType,OPTION,H,Hue
-colorType,OPTION,S,Saturation
-colorType,OPTION,V,Value Channels
-
 TYPE,BUTTON,colorChannels
 colorChannels,LABEL,Color Channels
 
