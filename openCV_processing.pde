@@ -36,7 +36,7 @@ void draw() {
   brc();
   String changed = brcChanged();
   if (changed.equals("init")) {
-    if (brcValue("cameraOn".equals("True"))) {
+    if (brcValue("cameraOn").equals("True")) {
       video = new Capture(this, Capture.list()[0]);
       video.start();
       video.resize(width, height);
@@ -79,22 +79,23 @@ void draw() {
   
   if (featureUsed == Feature.OBJECT_RECOGNITION) {
     String objectToDetect = brcValue("object");
-    if (useCamera) {
-      liveDetection(objectToDetect);
-    } else {
-      imgDetection(objectToDetect);
-    }
+    //imgDetection(objectToDetect);
   } else if (featureUsed == Feature.ADJUST_BRIGHTNESS) {
-    brightnessAdjust(int(brcValue("brightness")));
+    //brightnessAdjust(int(brcValue("brightness")));
   } else if (featureUsed == Feature.IMAGE_FILTER) {
+    if (useCamera) {
+      opencv.loadImage(video);
+    } else {
+      opencv.loadImage(image);
+    }
     filterImage(brcValue("filter"));
   } else if (featureUsed == Feature.FIND_EDGES) {
-    findEdges(brcValue("filterType"));
+    //findEdges(brcValue("filterType"));
   } else if (featureUsed == Feature.FIND_LINES) {
-    findLines();
+    //findLines();
   } else if (featureUsed == Feature.BACKGROUND_SUBTRACTION) {
-    backgroundSubtraction();
+    //backgroundSubtraction();
   } else if (featureUsed == Feature.COLOR_CHANNELS) {
-    colorChannels(brcValue("colorType"));
+    //colorChannels(brcValue("colorType"));
   }
 }

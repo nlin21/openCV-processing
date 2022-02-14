@@ -3,10 +3,10 @@ import processing.net.*;
 Server BRCServer;
 
 int BRC_port = 10002;
-int BRC_WebBodySize = 11063;
+int BRC_WebBodySize = 12630;
 
-String[] BRC_ids = new String[] {"cameraOn","fileName","init","faceRecognition","object","brightness","adjustBrightness","filter","imageFilter","findContours","filterType","findEdges","findLines","backgroundSubtraction","colorType","colorChannels"};
-String[] BRC_values = new String[] {"false","","0","0","clock","50","0","t","0","0","canny","0","0","0","R","0"};
+String[] BRC_ids = new String[] {"cameraOn","fileName","init","faceRecognition","object","brightness","adjustBrightness","filter","thresholdValue","blurValue","adaptiveBlockSize","adaptiveConstant","imageFilter","findContours","filterType","findEdges","findLines","backgroundSubtraction","colorType","colorChannels"};
+String[] BRC_values = new String[] {"false","","0","0","clock","50","0","t","80","50","50","50","0","0","canny","0","0","0","R","0"};
 
 String[] BRC_Monitors = new String[] {};
 String[] BRC_MonitorValues = new String[] {};
@@ -292,14 +292,18 @@ String BRC_WebBody =
 + "[\"RANGE\",\"brc_7\",\"brightness\",\"brc_8\"],\n"
 + "[\"BUTTON\",\"brc_9\",\"adjustBrightness\"],\n"
 + "[\"DROPDOWN\",\"brc_10\",\"filter\"],\n"
-+ "[\"BUTTON\",\"brc_11\",\"imageFilter\"],\n"
-+ "[\"BUTTON\",\"brc_12\",\"findContours\"],\n"
-+ "[\"DROPDOWN\",\"brc_13\",\"filterType\"],\n"
-+ "[\"BUTTON\",\"brc_14\",\"findEdges\"],\n"
-+ "[\"BUTTON\",\"brc_15\",\"findLines\"],\n"
-+ "[\"BUTTON\",\"brc_16\",\"backgroundSubtraction\"],\n"
-+ "[\"DROPDOWN\",\"brc_17\",\"colorType\"],\n"
-+ "[\"BUTTON\",\"brc_18\",\"colorChannels\"]];\n"
++ "[\"RANGE\",\"brc_11\",\"thresholdValue\",\"brc_12\"],\n"
++ "[\"RANGE\",\"brc_13\",\"blurValue\",\"brc_14\"],\n"
++ "[\"RANGE\",\"brc_15\",\"adaptiveBlockSize\",\"brc_16\"],\n"
++ "[\"RANGE\",\"brc_17\",\"adaptiveConstant\",\"brc_18\"],\n"
++ "[\"BUTTON\",\"brc_19\",\"imageFilter\"],\n"
++ "[\"BUTTON\",\"brc_20\",\"findContours\"],\n"
++ "[\"DROPDOWN\",\"brc_21\",\"filterType\"],\n"
++ "[\"BUTTON\",\"brc_22\",\"findEdges\"],\n"
++ "[\"BUTTON\",\"brc_23\",\"findLines\"],\n"
++ "[\"BUTTON\",\"brc_24\",\"backgroundSubtraction\"],\n"
++ "[\"DROPDOWN\",\"brc_25\",\"colorType\"],\n"
++ "[\"BUTTON\",\"brc_26\",\"colorChannels\"]];\n"
 + "\n"
 + "Monitor = false;\n"
 + "\n"
@@ -404,10 +408,34 @@ String BRC_WebBody =
 + "\n"
 + " <table ><tr><td class=\"auto-style1\">Filter Type:&nbsp;&nbsp;&nbsp;\n"
 + "<select name=\"brc_10\" id=\"brc_10\" onchange=\"SendNameValue('filter='+document.brc.brc_10.value);\">\n"
-+ "<option selected=\"selected\" value=\"t\">threshol</option>\n"
++ "<option selected=\"selected\" value=\"t\">threshold</option>\n"
 + "<option  value=\"b\">blur</option>\n"
 + "<option  value=\"a\">adaptive</option>\n"
 + "</select></td></tr></table>\n"
++ "\n"
++ "<table ><tr><td class=\"auto-style1\">0  \n"
++ "    <input type=\"range\" id=\"brc_11\" name=\"brc_11\" min=\"0\" max=\"255\" value=\"80\" step=\"1\"\n"
++ "    oninput=\"ShowRange('brc_11','brc_12','thresholdValue');\" />  255<br/>\n"
++ "    Threshold Value: <label id=\"brc_12\"></label>\n"
++ "    </td></tr></table>\n"
++ "\n"
++ "<table ><tr><td class=\"auto-style1\">0  \n"
++ "    <input type=\"range\" id=\"brc_13\" name=\"brc_13\" min=\"0\" max=\"255\" value=\"50\" step=\"1\"\n"
++ "    oninput=\"ShowRange('brc_13','brc_14','blurValue');\" />  255<br/>\n"
++ "    Blur Amount: <label id=\"brc_14\"></label>\n"
++ "    </td></tr></table>\n"
++ "\n"
++ "<table ><tr><td class=\"auto-style1\">0  \n"
++ "    <input type=\"range\" id=\"brc_15\" name=\"brc_15\" min=\"0\" max=\"255\" value=\"50\" step=\"1\"\n"
++ "    oninput=\"ShowRange('brc_15','brc_16','adaptiveBlockSize');\" />  255<br/>\n"
++ "    Adaptive Block Size: <label id=\"brc_16\"></label>\n"
++ "    </td></tr></table>\n"
++ "\n"
++ "<table ><tr><td class=\"auto-style1\">0  \n"
++ "    <input type=\"range\" id=\"brc_17\" name=\"brc_17\" min=\"0\" max=\"255\" value=\"50\" step=\"1\"\n"
++ "    oninput=\"ShowRange('brc_17','brc_18','adaptiveConstant');\" />  255<br/>\n"
++ "    Adaptive Constant: <label id=\"brc_18\"></label>\n"
++ "    </td></tr></table>\n"
 + "\n"
 + "<input type=\"button\" name=\"<!--<id>-->\" id=\"<!--<id>-->\" value=\"Image Filter\" onClick=\"SendNameValue('imageFilter='+Math.floor(Math.random()*1000000));\" />\n"
 + "&nbsp;&nbsp;&nbsp;\n"
@@ -416,7 +444,7 @@ String BRC_WebBody =
 + "&nbsp;&nbsp;&nbsp;\n"
 + "\n"
 + " <table ><tr><td class=\"auto-style1\">Filter Type:&nbsp;&nbsp;&nbsp;\n"
-+ "<select name=\"brc_13\" id=\"brc_13\" onchange=\"SendNameValue('filterType='+document.brc.brc_13.value);\">\n"
++ "<select name=\"brc_21\" id=\"brc_21\" onchange=\"SendNameValue('filterType='+document.brc.brc_21.value);\">\n"
 + "<option selected=\"selected\" value=\"canny\">Canny</option>\n"
 + "<option  value=\"scharr\">Scharr</option>\n"
 + "<option  value=\"sobel\">Sobel</option>\n"
@@ -432,7 +460,7 @@ String BRC_WebBody =
 + "&nbsp;&nbsp;&nbsp;\n"
 + "\n"
 + " <table ><tr><td class=\"auto-style1\">Color Type:&nbsp;&nbsp;&nbsp;\n"
-+ "<select name=\"brc_17\" id=\"brc_17\" onchange=\"SendNameValue('colorType='+document.brc.brc_17.value);\">\n"
++ "<select name=\"brc_25\" id=\"brc_25\" onchange=\"SendNameValue('colorType='+document.brc.brc_25.value);\">\n"
 + "<option selected=\"selected\" value=\"R\">Red</option>\n"
 + "<option  value=\"G\">Green</option>\n"
 + "<option  value=\"B\">Blue</option>\n"
@@ -457,4 +485,3 @@ void brcSendWebpage(Client client) {
     String WebPage = head1+str(BRC_WebBody.length())+head2+BRC_WebBody;
     client.write(WebPage);
 }
-

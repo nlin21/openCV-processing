@@ -37,9 +37,37 @@ adjustBrightness,LABEL,Adjust Brightness
 
 TYPE,DROPDOWN,filter
 filter,LABEL,Filter Type
-filter,OPTION,t,threshol
+filter,OPTION,t,threshold
 filter,OPTION,b,blur
 filter,OPTION,a,adaptive
+
+TYPE,RANGE,thresholdValue
+thresholdValue,LABEL,Threshold Value
+thresholdValue,MIN,0
+thresholdValue,MAX,255
+thresholdValue,STEP,1
+thresholdValue,VALUE,80
+
+TYPE,RANGE,blurValue
+blurValue,LABEL,Blur Amount
+blurValue,MIN,0
+blurValue,MAX,255
+blurValue,STEP,1
+blurValue,VALUE,50
+
+TYPE,RANGE,adaptiveBlockSize
+adaptiveBlockSize,LABEL,Adaptive Block Size
+adaptiveBlockSize,MIN,0
+adaptiveBlockSize,MAX,255
+adaptiveBlockSize,STEP,1
+adaptiveBlockSize,VALUE,50
+
+TYPE,RANGE,adaptiveConstant
+adaptiveConstant,LABEL,Adaptive Constant
+adaptiveConstant,MIN,0
+adaptiveConstant,MAX,255
+adaptiveConstant,STEP,1
+adaptiveConstant,VALUE,50
 
 TYPE,BUTTON,imageFilter
 imageFilter,LABEL,Image Filter
