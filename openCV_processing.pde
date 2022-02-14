@@ -13,14 +13,14 @@ Feature featureUsed;
 
 public enum Feature {
   OBJECT_RECOGNITION, // check
-    ADJUST_BRIGHTNESS, // check
-    IMAGE_FILTER, // check
-    FIND_CONTOURS, //check
-    FIND_EDGES, // check
-    FIND_LINES, //check
-    BACKGROUND_SUBTRACTION, // check
-    COLOR_CHANNELS,
-    NONE
+  ADJUST_BRIGHTNESS, // check
+  IMAGE_FILTER, // check
+  FIND_CONTOURS, //check
+  FIND_EDGES, // check
+  FIND_LINES, //check
+  BACKGROUND_SUBTRACTION, // doesn't work yet
+  COLOR_CHANNELS,
+  NONE
 }
 
 void setup() {
@@ -122,6 +122,13 @@ void draw() {
     movie.play();
     backgroundSubtraction();
   } else if (featureUsed == Feature.COLOR_CHANNELS) {
-    //colorChannels(brcValue("colorType"));
+    if (useCamera) {
+      opencv.loadImage(video);
+      colorChannels(video);
+    } else {
+      opencv.loadImage(image);
+      colorChannels(image);
+    }
+    
   }
 }
