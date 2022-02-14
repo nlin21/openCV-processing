@@ -19,7 +19,7 @@ public enum Feature {
   FIND_EDGES, // check
   FIND_LINES, //check
   BACKGROUND_SUBTRACTION, // doesn't work yet
-  COLOR_CHANNELS,
+  COLOR_CHANNELS, //check
   NONE
 }
 
