@@ -145,8 +145,14 @@ imageSource,OPTION,I,Image
 
 TYPE,DROPDOWN,movie
 movie,LABEL,Movie Type
-movie,OPTION,U,Ur Mom
-movie,OPTION,A,A movie
+movie,OPTION,street,street movie
+movie,OPTION,sampleMovie,Sample Movie
+
+TYPE,DROPDOWN,mediaType
+mediaType,LABEL,Media Type
+mediaType,OPTION,movie,Movie,SELECTED
+mediaType,OPTION,camera,Camera
+mediaType,OPTION,image,Image
 
 TYPE,BUTTON,backgroundSubtraction
 backgroundSubtraction,LABEL,Background Subtration

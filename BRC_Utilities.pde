@@ -3,10 +3,10 @@ import processing.net.*;
 Server BRCServer;
 
 int BRC_port = 10002;
-int BRC_WebBodySize = 15738;
+int BRC_WebBodySize = 16200;
 
-String[] BRC_ids = new String[] {"cameraOn","fileName","init","object","faceRecognition","brightness","adjustBrightness","filter","thresholdValue","blurValue","adaptiveBlockSize","adaptiveConstant","imageFilter","findContours","contourThreshold","filterType","findEdges","findLines","findLinesThreshold","findLinesMinLength","findLinesMaxLineGap","imageSource","movie","backgroundSubtraction","colorChannels"};
-String[] BRC_values = new String[] {"false","","0","face","0","50","0","t","80","50","50","50","0","0","80","canny","0","0","100","30","20","M","U","0","0"};
+String[] BRC_ids = new String[] {"cameraOn","fileName","init","object","faceRecognition","brightness","adjustBrightness","filter","thresholdValue","blurValue","adaptiveBlockSize","adaptiveConstant","imageFilter","findContours","contourThreshold","filterType","findEdges","findLines","findLinesThreshold","findLinesMinLength","findLinesMaxLineGap","imageSource","movie","mediaType","backgroundSubtraction","colorChannels"};
+String[] BRC_values = new String[] {"false","","0","face","0","50","0","t","80","50","50","50","0","0","80","canny","0","0","100","30","20","M","street","movie","0","0"};
 
 String[] BRC_Monitors = new String[] {};
 String[] BRC_MonitorValues = new String[] {};
@@ -315,9 +315,10 @@ String BRC_WebBody =
 + "[\"NOTE\",\"brc_39\",\"nt9\"],\n"
 + "[\"DROPDOWN\",\"brc_40\",\"imageSource\"],\n"
 + "[\"DROPDOWN\",\"brc_41\",\"movie\"],\n"
-+ "[\"BUTTON\",\"brc_42\",\"backgroundSubtraction\"],\n"
-+ "[\"NOTE\",\"brc_43\",\"nt10\"],\n"
-+ "[\"BUTTON\",\"brc_44\",\"colorChannels\"]];\n"
++ "[\"DROPDOWN\",\"brc_42\",\"mediaType\"],\n"
++ "[\"BUTTON\",\"brc_43\",\"backgroundSubtraction\"],\n"
++ "[\"NOTE\",\"brc_44\",\"nt10\"],\n"
++ "[\"BUTTON\",\"brc_45\",\"colorChannels\"]];\n"
 + "\n"
 + "Monitor = false;\n"
 + "\n"
@@ -517,14 +518,21 @@ String BRC_WebBody =
 + "\n"
 + "<table ><tr><td class=\"auto-style1\">Movie Type:&nbsp;&nbsp;&nbsp;\n"
 + "<select name=\"brc_41\" id=\"brc_41\" onchange=\"SendNameValue('movie='+document.brc.brc_41.value);\">\n"
-+ "<option selected=\"selected\" value=\"U\">Ur Mom</option>\n"
-+ "<option  value=\"A\">A movie</option>\n"
++ "<option selected=\"selected\" value=\"street\">street movie</option>\n"
++ "<option  value=\"sampleMovie\">Sample Movie</option>\n"
++ "</select></td></tr></table>\n"
++ "\n"
++ "<table ><tr><td class=\"auto-style1\">Media Type:&nbsp;&nbsp;&nbsp;\n"
++ "<select name=\"brc_42\" id=\"brc_42\" onchange=\"SendNameValue('mediaType='+document.brc.brc_42.value);\">\n"
++ "<option selected=\"selected\" value=\"movie\">Movie</option>\n"
++ "<option  value=\"camera\">Camera</option>\n"
++ "<option  value=\"image\">Image</option>\n"
 + "</select></td></tr></table>\n"
 + "\n"
 + "<input type=\"button\" name=\"<!--<id>-->\" id=\"<!--<id>-->\" value=\"Background Subtration\" onClick=\"SendNameValue('backgroundSubtraction='+Math.floor(Math.random()*1000000));\" />\n"
 + "&nbsp;&nbsp;&nbsp;\n"
 + "\n"
-+ " <table><tr><td class=\"auto-style1\"><label id=\"brc_43\">Color Channeling</label></td></tr></table>\n"
++ " <table><tr><td class=\"auto-style1\"><label id=\"brc_44\">Color Channeling</label></td></tr></table>\n"
 + "\n"
 + "<input type=\"button\" name=\"<!--<id>-->\" id=\"<!--<id>-->\" value=\"Color Channels\" onClick=\"SendNameValue('colorChannels='+Math.floor(Math.random()*1000000));\" />\n"
 + "&nbsp;&nbsp;&nbsp;\n"

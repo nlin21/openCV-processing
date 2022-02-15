@@ -4,6 +4,7 @@ import java.awt.*;
 
 Capture video;
 PImage image;
+Movie Movie;
 OpenCV opencv;
 
 boolean initialized = false;
@@ -116,12 +117,22 @@ void draw() {
     }
     findLines(int(brcValue("findLinesThreshold")), int(brcValue("findLinesMinLength")), int(brcValue("findLinesMaxLineGap")));
   } else if (featureUsed == Feature.BACKGROUND_SUBTRACTION) {
-    Movie movie = new Movie(this, "street.mov");
-    opencv = new OpenCV(this, 720, 480);
-    opencv.startBackgroundSubtraction(5, 3, 0.5);
-    movie.loop();
-    movie.play();
-    backgroundSubtraction();
+    if (brcValue("mediaType").equals("movie")) {
+      Movie = new Movie(this, brcValue("movie") + ".mov");
+      opencv = new OpenCV(this, width,height);
+      opencv.startBackgroundSubtraction(5, 3, 0.5);
+      Movie.loop();
+      Movie.play();
+      backgroundSubtraction(2);
+    } else if (brcValue("mediaType").equals("camera")) {
+      opencv = new OpenCV(this,width,height);
+      opencv.startBackgroundSubtraction(5, 3, 0.5);
+      backgroundSubtraction(0);
+    } else {
+      opencv = new OpenCV(this,width,height);
+      opencv.startBackgroundSubtraction(5, 3, 0.5);
+      backgroundSubtraction(1);
+    }
   } else if (featureUsed == Feature.COLOR_CHANNELS) {
     if (useCamera) {
       opencv.loadImage(video);
