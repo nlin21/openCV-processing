@@ -82,8 +82,7 @@ void draw() {
   // run desired feature
 
   if (featureUsed == Feature.OBJECT_RECOGNITION) {
-    String objectToDetect = brcValue("object");
-    ObjectDetection(objectToDetect);
+    ObjectDetection(brcValue("object"));
   } else if (featureUsed == Feature.ADJUST_BRIGHTNESS) {
     int brightnessOffset = int(brcValue("brightness"));
     AdjustBrightness(brightnessOffset);

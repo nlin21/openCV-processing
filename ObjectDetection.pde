@@ -1,4 +1,5 @@
-Rectangle[] objects;
+String cascade;
+boolean cascaded = false;
 
 void ObjectDetection(String objectToDetect) {
   opencv.useColor();
@@ -9,21 +10,31 @@ void ObjectDetection(String objectToDetect) {
     opencv.loadImage(image);
   }
   
-  if (objectToDetect.equals("face")) {
-    opencv.loadCascade(OpenCV.CASCADE_FRONTALFACE);
-  } else if (objectToDetect.equals("eye")) {
-    opencv.loadCascade(OpenCV.CASCADE_EYE);
-  } else if (objectToDetect.equals("mouth")) {
-    opencv.loadCascade(OpenCV.CASCADE_MOUTH);
-  } else if (objectToDetect.equals("nose")) {
-    opencv.loadCascade(OpenCV.CASCADE_NOSE);
-  } else if (objectToDetect.equals("rightEar")) {
-    opencv.loadCascade(OpenCV.CASCADE_RIGHT_EAR);
+  if (!cascaded) {
+    if (objectToDetect.equals("face")) {
+      opencv.loadCascade(OpenCV.CASCADE_FRONTALFACE);
+      cascade = "face";
+    } else if (objectToDetect.equals("eye")) {
+      opencv.loadCascade(OpenCV.CASCADE_EYE);
+      cascade = "eye";
+    } else if (objectToDetect.equals("mouth")) {
+      opencv.loadCascade(OpenCV.CASCADE_MOUTH);
+      cascade = "mouth";
+    } else if (objectToDetect.equals("nose")) {
+      opencv.loadCascade(OpenCV.CASCADE_NOSE);
+      cascade = "nose";
+    } else if (objectToDetect.equals("rightEar")) {
+      opencv.loadCascade(OpenCV.CASCADE_RIGHT_EAR);
+      cascade = "rightEar";
+    }
+    cascaded = true;
+  } else if (brcValue("object").equals(cascade) == false) {
+    cascaded = false;
   }
   
   image(opencv.getOutput(),0,0);
   
-  objects = opencv.detect();
+  Rectangle[] objects = opencv.detect();
   
   noFill();
   stroke(0,255,0);
