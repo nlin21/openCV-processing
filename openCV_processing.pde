@@ -4,6 +4,7 @@ import java.awt.*;
 
 Capture video;
 PImage image;
+Movie Movie;
 OpenCV opencv;
 
 boolean initialized = false;
@@ -14,6 +15,7 @@ Feature featureUsed;
 public enum Feature {
   OBJECT_RECOGNITION, // check
   ADJUST_BRIGHTNESS, // check
+  ADJUST_CONTRAST,
   IMAGE_FILTER, // check
   FIND_CONTOURS, //check
   FIND_EDGES, // check
@@ -66,6 +68,8 @@ void draw() {
     featureUsed = Feature.OBJECT_RECOGNITION;
   } else if (changed.equals("adjustBrightness")) {
     featureUsed = Feature.ADJUST_BRIGHTNESS;
+  } else if (changed.equals("adjustContrast")) {
+    featureUsed = Feature.ADJUST_CONTRAST;
   } else if (changed.equals("imageFilter")) {
     featureUsed = Feature.IMAGE_FILTER;
   } else if (changed.equals("findEdges")) {
@@ -86,6 +90,9 @@ void draw() {
   } else if (featureUsed == Feature.ADJUST_BRIGHTNESS) {
     int brightnessOffset = int(brcValue("brightness"));
     AdjustBrightness(brightnessOffset);
+  } else if (featureUsed == Feature.ADJUST_CONTRAST) {
+    float contrast = int(brcValue("contrast"))/100.;
+    AdjustContrast(contrast);
   } else if (featureUsed == Feature.IMAGE_FILTER) {
     if (useCamera) {
       opencv.loadImage(video);
@@ -115,12 +122,22 @@ void draw() {
     }
     findLines(int(brcValue("findLinesThreshold")), int(brcValue("findLinesMinLength")), int(brcValue("findLinesMaxLineGap")));
   } else if (featureUsed == Feature.BACKGROUND_SUBTRACTION) {
-    Movie movie = new Movie(this, "street.mov");
-    opencv = new OpenCV(this, 720, 480);
-    opencv.startBackgroundSubtraction(5, 3, 0.5);
-    movie.loop();
-    movie.play();
-    backgroundSubtraction();
+    if (brcValue("mediaType").equals("movie")) {
+      Movie = new Movie(this, brcValue("movie") + ".mov");
+      opencv = new OpenCV(this, width,height);
+      opencv.startBackgroundSubtraction(5, 3, 0.5);
+      Movie.loop();
+      Movie.play();
+      backgroundSubtraction(2);
+    } else if (brcValue("mediaType").equals("camera")) {
+      opencv = new OpenCV(this,width,height);
+      opencv.startBackgroundSubtraction(5, 3, 0.5);
+      backgroundSubtraction(0);
+    } else {
+      opencv = new OpenCV(this,width,height);
+      opencv.startBackgroundSubtraction(5, 3, 0.5);
+      backgroundSubtraction(1);
+    }
   } else if (featureUsed == Feature.COLOR_CHANNELS) {
     if (useCamera) {
       opencv.loadImage(video);

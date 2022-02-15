@@ -40,6 +40,19 @@ TYPE,BUTTON,adjustBrightness
 adjustBrightness,LABEL,Adjust Brightness
 
 TYPE,NOTE,nt4
+nt4,LABEL,contrast
+
+TYPE,RANGE,contrast
+contrast,LABEL,Contrast
+contrast,MIN,0
+contrast,MAX,400
+contrast,STEP,1
+contrast,VALUE,0
+
+TYPE,BUTTON,adjustContrast
+adjustContrast,LABEL,Adjust Contrast
+
+TYPE,NOTE,nt4
 nt4,LABEL,Image Filtering
 
 TYPE,DROPDOWN,filter
@@ -145,8 +158,14 @@ imageSource,OPTION,I,Image
 
 TYPE,DROPDOWN,movie
 movie,LABEL,Movie Type
-movie,OPTION,U,Ur Mom
-movie,OPTION,A,A movie
+movie,OPTION,street,street movie
+movie,OPTION,sampleMovie,Sample Movie
+
+TYPE,DROPDOWN,mediaType
+mediaType,LABEL,Media Type
+mediaType,OPTION,movie,Movie,SELECTED
+mediaType,OPTION,camera,Camera
+mediaType,OPTION,image,Image
 
 TYPE,BUTTON,backgroundSubtraction
 backgroundSubtraction,LABEL,Background Subtration
