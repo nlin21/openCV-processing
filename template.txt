@@ -40,6 +40,19 @@ TYPE,BUTTON,adjustBrightness
 adjustBrightness,LABEL,Adjust Brightness
 
 TYPE,NOTE,nt4
+nt4,LABEL,contrast
+
+TYPE,RANGE,contrast
+contrast,LABEL,Contrast
+contrast,MIN,0
+contrast,MAX,200
+contrast,STEP,1
+contrast,VALUE,0
+
+TYPE,BUTTON,adjustContrast
+adjustContrast,LABEL,Adjust Contrast
+
+TYPE,NOTE,nt4
 nt4,LABEL,Image Filtering
 
 TYPE,DROPDOWN,filter
