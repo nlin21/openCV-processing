@@ -45,7 +45,7 @@ nt4,LABEL,contrast
 TYPE,RANGE,contrast
 contrast,LABEL,Contrast
 contrast,MIN,0
-contrast,MAX,200
+contrast,MAX,400
 contrast,STEP,1
 contrast,VALUE,0
 
