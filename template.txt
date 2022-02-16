@@ -152,14 +152,8 @@ nt9,LABEL,Background Subtraction
 
 TYPE,DROPDOWN,imageSource
 imageSource,LABEL,Image Source for Background Subtraction
-imageSource,OPTION,M,Movie
 imageSource,OPTION,C,Camera
 imageSource,OPTION,I,Image
-
-TYPE,DROPDOWN,movie
-movie,LABEL,Movie Type
-movie,OPTION,street,street movie
-movie,OPTION,sampleMovie,Sample Movie
 
 TYPE,BUTTON,backgroundSubtraction
 backgroundSubtraction,LABEL,Background Subtration
