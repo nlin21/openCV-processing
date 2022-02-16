@@ -3,10 +3,10 @@ import processing.net.*;
 Server BRCServer;
 
 int BRC_port = 10002;
-int BRC_WebBodySize = 15544;
+int BRC_WebBodySize = 15607;
 
-String[] BRC_ids = new String[] {"cameraOn","fileName","init","object","faceRecognition","brightness","adjustBrightness","contrast","adjustContrast","filter","thresholdValue","blurValue","adaptiveBlockSize","adaptiveConstant","imageFilter","contourThreshold","findContours","filterType","findEdges","findLinesThreshold","findLinesMinLength","findLinesMaxLineGap","findLines","backgroundSubtraction","colorChannels"};
-String[] BRC_values = new String[] {"false","","0","face","0","50","0","0","0","t","80","50","51","8","0","80","0","canny","0","100","30","20","0","0","0"};
+String[] BRC_ids = new String[] {"cameraOn","fileName","init","object","faceRecognition","brightness","adjustBrightness","contrast","adjustContrast","filter","thresholdValue","blurValue","adaptiveBlockSize","imageFilter","betterEdgeDetection","contourThreshold","findContours","filterType","findEdges","findLinesThreshold","findLinesMinLength","findLinesMaxLineGap","findLines","backgroundSubtraction","colorChannels"};
+String[] BRC_values = new String[] {"false","","0","face","0","50","0","0","0","t","80","50","51","0","0","80","0","canny","0","100","30","20","0","0","0"};
 
 String[] BRC_Monitors = new String[] {};
 String[] BRC_MonitorValues = new String[] {};
@@ -301,8 +301,9 @@ String BRC_WebBody =
 + "[\"RANGE\",\"brc_18\",\"thresholdValue\",\"brc_19\"],\n"
 + "[\"RANGE\",\"brc_20\",\"blurValue\",\"brc_21\"],\n"
 + "[\"RANGE\",\"brc_22\",\"adaptiveBlockSize\",\"brc_23\"],\n"
-+ "[\"RANGE\",\"brc_24\",\"adaptiveConstant\",\"brc_25\"],\n"
-+ "[\"BUTTON\",\"brc_26\",\"imageFilter\"],\n"
++ "[\"NOTE\",\"brc_24\",\"nt5\"],\n"
++ "[\"BUTTON\",\"brc_25\",\"imageFilter\"],\n"
++ "[\"BUTTON\",\"brc_26\",\"betterEdgeDetection\"],\n"
 + "[\"NOTE\",\"brc_27\",\"nt6\"],\n"
 + "[\"RANGE\",\"brc_28\",\"contourThreshold\",\"brc_29\"],\n"
 + "[\"BUTTON\",\"brc_30\",\"findContours\"],\n"
@@ -460,13 +461,12 @@ String BRC_WebBody =
 + "    Adaptive Block Size: <label id=\"brc_23\"></label>\n"
 + "    </td></tr></table>\n"
 + "\n"
-+ "<table ><tr><td class=\"auto-style1\">1  \n"
-+ "    <input type=\"range\" id=\"brc_24\" name=\"brc_24\" min=\"1\" max=\"255\" value=\"8\" step=\"1\"\n"
-+ "    oninput=\"ShowRange('brc_24','brc_25','adaptiveConstant');\" />  255<br/>\n"
-+ "    Adaptive Constant: <label id=\"brc_25\"></label>\n"
-+ "    </td></tr></table>\n"
++ "<table><tr><td class=\"auto-style1\"><label id=\"brc_24\">Image Filtering</label></td></tr></table>\n"
 + "\n"
 + "<input type=\"button\" name=\"<!--<id>-->\" id=\"<!--<id>-->\" value=\"Image Filter\" onClick=\"SendNameValue('imageFilter='+Math.floor(Math.random()*1000000));\" />\n"
++ "&nbsp;&nbsp;&nbsp;\n"
++ "\n"
++ " <input type=\"button\" name=\"<!--<id>-->\" id=\"<!--<id>-->\" value=\"Better Edge Detection (using blur and edge detection)\" onClick=\"SendNameValue('betterEdgeDetection='+Math.floor(Math.random()*1000000));\" />\n"
 + "&nbsp;&nbsp;&nbsp;\n"
 + "\n"
 + " <table><tr><td class=\"auto-style1\"><label id=\"brc_27\">Finding Contours</label></td></tr></table>\n"

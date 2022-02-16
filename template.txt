@@ -82,15 +82,14 @@ adaptiveBlockSize,MAX,255
 adaptiveBlockSize,STEP,2
 adaptiveBlockSize,VALUE,51
 
-TYPE,RANGE,adaptiveConstant
-adaptiveConstant,LABEL,Adaptive Constant
-adaptiveConstant,MIN,1
-adaptiveConstant,MAX,255
-adaptiveConstant,STEP,1
-adaptiveConstant,VALUE,8
+TYPE,NOTE,nt5
+nt5,LABEL,Image Filtering
 
 TYPE,BUTTON,imageFilter
 imageFilter,LABEL,Image Filter
+
+TYPE,BUTTON,betterEdgeDetection
+betterEdgeDetection,LABEL,Better Edge Detection (using blur and edge detection)
 
 TYPE,NOTE,nt6
 nt6,LABEL,Finding Contours

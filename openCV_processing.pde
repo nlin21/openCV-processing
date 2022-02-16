@@ -16,13 +16,14 @@ Feature featureUsed;
 public enum Feature {
   OBJECT_RECOGNITION, // check
   ADJUST_BRIGHTNESS, // check
-  ADJUST_CONTRAST,
+  ADJUST_CONTRAST, // check
   IMAGE_FILTER, // check
   FIND_CONTOURS, //check
   FIND_EDGES, // check
   FIND_LINES, //check
-  BACKGROUND_SUBTRACTION, // doesn't work yet
+  BACKGROUND_SUBTRACTION, // check
   COLOR_CHANNELS, //check
+  BETTER_EDGE_DETECTION,
   NONE
 }
 
@@ -84,6 +85,8 @@ void draw() {
     backgroundSubtractInit = false;
   } else if (changed.equals("colorChannels")) {
     featureUsed = Feature.COLOR_CHANNELS;
+  } else if (changed.equals("betterEdgeDetection")) {
+    featureUsed = Feature.BETTER_EDGE_DETECTION;
   }
   // run desired feature
 
@@ -104,6 +107,13 @@ void draw() {
       opencv.gray();
     }
     filterImage(brcValue("filter"));
+  } else if (featureUsed == Feature.BETTER_EDGE_DETECTION) {
+    if (useCamera) {
+      opencv.loadImage(video);
+    } else {
+      opencv.loadImage(image);
+    }
+    betterEdgeDetection();
   } else if (featureUsed == Feature.FIND_CONTOURS) {
     if (useCamera) {
       opencv.loadImage(video);
