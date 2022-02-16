@@ -31,7 +31,7 @@ void setup() {
   frameRate(60);
   useCamera = false;
   opencv = new OpenCV(this, width, height);
-  brcShowMessages(true);
+  //brcShowMessages(true);
   featureUsed = Feature.NONE;
 }
 

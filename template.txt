@@ -52,8 +52,8 @@ contrast,VALUE,0
 TYPE,BUTTON,adjustContrast
 adjustContrast,LABEL,Adjust Contrast
 
-TYPE,NOTE,nt4
-nt4,LABEL,Image Filtering
+TYPE,NOTE,nt5
+nt5,LABEL,Image Filtering
 
 TYPE,DROPDOWN,filter
 filter,LABEL,Filter Type
@@ -88,9 +88,6 @@ adaptiveConstant,MIN,1
 adaptiveConstant,MAX,255
 adaptiveConstant,STEP,1
 adaptiveConstant,VALUE,50
-
-TYPE,NOTE,nt5
-nt5,LABEL,Image Filtering
 
 TYPE,BUTTON,imageFilter
 imageFilter,LABEL,Image Filter
