@@ -150,11 +150,6 @@ findLinesMaxLineGap,VALUE,20
 TYPE,NOTE,nt9
 nt9,LABEL,Background Subtraction
 
-TYPE,DROPDOWN,imageSource
-imageSource,LABEL,Image Source for Background Subtraction
-imageSource,OPTION,C,Camera
-imageSource,OPTION,I,Image
-
 TYPE,BUTTON,backgroundSubtraction
 backgroundSubtraction,LABEL,Background Subtration
 

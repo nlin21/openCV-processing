@@ -126,21 +126,12 @@ void draw() {
     }
     findLines(int(brcValue("findLinesThreshold")), int(brcValue("findLinesMinLength")), int(brcValue("findLinesMaxLineGap")));
   } else if (featureUsed == Feature.BACKGROUND_SUBTRACTION) {
-    if (brcValue("imageSource").equals("C")) {
       if (!backgroundSubtractInit) {
         opencv = new OpenCV(this,width,height);
         opencv.startBackgroundSubtraction(5, 3, 0.5);
         backgroundSubtractInit = true;
       }
-      backgroundSubtraction(0);
-    } else {
-      if (!backgroundSubtractInit) {
-        opencv = new OpenCV(this,width,height);
-        opencv.startBackgroundSubtraction(5, 3, 0.5);
-        backgroundSubtractInit = true;
-      }
-      backgroundSubtraction(1);
-    }
+      backgroundSubtraction();
   } else if (featureUsed == Feature.COLOR_CHANNELS) {
     if (useCamera) {
       opencv.loadImage(video);
@@ -149,6 +140,5 @@ void draw() {
       opencv.loadImage(image);
       colorChannels(image);
     }
-    
   }
 }

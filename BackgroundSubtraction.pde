@@ -1,13 +1,7 @@
-void backgroundSubtraction(int used) {
-  if (used == 0) {
-    image(video, 0, 0);  
-    opencv.loadImage(video);  
-  }
-  if (used == 1) {
-    image(image,0,0);
-    opencv.loadImage(image);
-  }
-  
+void backgroundSubtraction() {
+  image(video, 0, 0);  
+  opencv.loadImage(video);  
+
   opencv.updateBackground();
   
   opencv.dilate();
