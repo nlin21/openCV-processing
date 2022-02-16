@@ -27,7 +27,7 @@ TYPE,BUTTON,faceRecognition
 faceRecognition,LABEL,Object Recognition
 
 TYPE,NOTE,nt3
-nt3,LABEL,brightness
+nt3,LABEL,Brightness
 
 TYPE,RANGE,brightness
 brightness,LABEL,Brightness
@@ -40,10 +40,10 @@ TYPE,BUTTON,adjustBrightness
 adjustBrightness,LABEL,Adjust Brightness
 
 TYPE,NOTE,nt4
-nt4,LABEL,contrast
+nt4,LABEL,Contrast
 
 TYPE,RANGE,contrast
-contrast,LABEL,Contrast
+contrast,LABEL,Contrast Factor
 contrast,MIN,0
 contrast,MAX,400
 contrast,STEP,1
@@ -87,7 +87,7 @@ adaptiveConstant,LABEL,Adaptive Constant
 adaptiveConstant,MIN,1
 adaptiveConstant,MAX,255
 adaptiveConstant,STEP,1
-adaptiveConstant,VALUE,50
+adaptiveConstant,VALUE,8
 
 TYPE,BUTTON,imageFilter
 imageFilter,LABEL,Image Filter
@@ -151,8 +151,8 @@ TYPE,BUTTON,backgroundSubtraction
 backgroundSubtraction,LABEL,Background Subtration
 
 TYPE,NOTE,nt10
-nt10,LABEL,Color Channeling
+nt10,LABEL,Color Channels
 
 TYPE,BUTTON,colorChannels
-colorChannels,LABEL,Color Channels
+colorChannels,LABEL,Display Color Channels
 

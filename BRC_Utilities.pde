@@ -3,10 +3,10 @@ import processing.net.*;
 Server BRCServer;
 
 int BRC_port = 10002;
-int BRC_WebBodySize = 15532;
+int BRC_WebBodySize = 15544;
 
 String[] BRC_ids = new String[] {"cameraOn","fileName","init","object","faceRecognition","brightness","adjustBrightness","contrast","adjustContrast","filter","thresholdValue","blurValue","adaptiveBlockSize","adaptiveConstant","imageFilter","contourThreshold","findContours","filterType","findEdges","findLinesThreshold","findLinesMinLength","findLinesMaxLineGap","findLines","backgroundSubtraction","colorChannels"};
-String[] BRC_values = new String[] {"false","","0","face","0","50","0","0","0","t","80","50","51","50","0","80","0","canny","0","100","30","20","0","0","0"};
+String[] BRC_values = new String[] {"false","","0","face","0","50","0","0","0","t","80","50","51","8","0","80","0","canny","0","100","30","20","0","0","0"};
 
 String[] BRC_Monitors = new String[] {};
 String[] BRC_MonitorValues = new String[] {};
@@ -411,7 +411,7 @@ String BRC_WebBody =
 + "<input type=\"button\" name=\"<!--<id>-->\" id=\"<!--<id>-->\" value=\"Object Recognition\" onClick=\"SendNameValue('faceRecognition='+Math.floor(Math.random()*1000000));\" />\n"
 + "&nbsp;&nbsp;&nbsp;\n"
 + "\n"
-+ " <table><tr><td class=\"auto-style1\"><label id=\"brc_8\">brightness</label></td></tr></table>\n"
++ " <table><tr><td class=\"auto-style1\"><label id=\"brc_8\">Brightness</label></td></tr></table>\n"
 + "\n"
 + "<table ><tr><td class=\"auto-style1\">-255  \n"
 + "    <input type=\"range\" id=\"brc_9\" name=\"brc_9\" min=\"-255\" max=\"255\" value=\"50\" step=\"1\"\n"
@@ -422,12 +422,12 @@ String BRC_WebBody =
 + "<input type=\"button\" name=\"<!--<id>-->\" id=\"<!--<id>-->\" value=\"Adjust Brightness\" onClick=\"SendNameValue('adjustBrightness='+Math.floor(Math.random()*1000000));\" />\n"
 + "&nbsp;&nbsp;&nbsp;\n"
 + "\n"
-+ " <table><tr><td class=\"auto-style1\"><label id=\"brc_12\">contrast</label></td></tr></table>\n"
++ " <table><tr><td class=\"auto-style1\"><label id=\"brc_12\">Contrast</label></td></tr></table>\n"
 + "\n"
 + "<table ><tr><td class=\"auto-style1\">0  \n"
 + "    <input type=\"range\" id=\"brc_13\" name=\"brc_13\" min=\"0\" max=\"400\" value=\"0\" step=\"1\"\n"
 + "    oninput=\"ShowRange('brc_13','brc_14','contrast');\" />  400<br/>\n"
-+ "    Contrast: <label id=\"brc_14\"></label>\n"
++ "    Contrast Factor: <label id=\"brc_14\"></label>\n"
 + "    </td></tr></table>\n"
 + "\n"
 + "<input type=\"button\" name=\"<!--<id>-->\" id=\"<!--<id>-->\" value=\"Adjust Contrast\" onClick=\"SendNameValue('adjustContrast='+Math.floor(Math.random()*1000000));\" />\n"
@@ -461,7 +461,7 @@ String BRC_WebBody =
 + "    </td></tr></table>\n"
 + "\n"
 + "<table ><tr><td class=\"auto-style1\">1  \n"
-+ "    <input type=\"range\" id=\"brc_24\" name=\"brc_24\" min=\"1\" max=\"255\" value=\"50\" step=\"1\"\n"
++ "    <input type=\"range\" id=\"brc_24\" name=\"brc_24\" min=\"1\" max=\"255\" value=\"8\" step=\"1\"\n"
 + "    oninput=\"ShowRange('brc_24','brc_25','adaptiveConstant');\" />  255<br/>\n"
 + "    Adaptive Constant: <label id=\"brc_25\"></label>\n"
 + "    </td></tr></table>\n"
@@ -520,9 +520,9 @@ String BRC_WebBody =
 + "<input type=\"button\" name=\"<!--<id>-->\" id=\"<!--<id>-->\" value=\"Background Subtration\" onClick=\"SendNameValue('backgroundSubtraction='+Math.floor(Math.random()*1000000));\" />\n"
 + "&nbsp;&nbsp;&nbsp;\n"
 + "\n"
-+ " <table><tr><td class=\"auto-style1\"><label id=\"brc_44\">Color Channeling</label></td></tr></table>\n"
++ " <table><tr><td class=\"auto-style1\"><label id=\"brc_44\">Color Channels</label></td></tr></table>\n"
 + "\n"
-+ "<input type=\"button\" name=\"<!--<id>-->\" id=\"<!--<id>-->\" value=\"Color Channels\" onClick=\"SendNameValue('colorChannels='+Math.floor(Math.random()*1000000));\" />\n"
++ "<input type=\"button\" name=\"<!--<id>-->\" id=\"<!--<id>-->\" value=\"Display Color Channels\" onClick=\"SendNameValue('colorChannels='+Math.floor(Math.random()*1000000));\" />\n"
 + "&nbsp;&nbsp;&nbsp;\n"
 + "\n"
 + " \n"
