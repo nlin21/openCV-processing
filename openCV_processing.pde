@@ -8,6 +8,7 @@ Movie Movie;
 OpenCV opencv;
 
 boolean initialized = false;
+boolean backgroundSubtractInit = false;
 boolean useCamera;
 
 Feature featureUsed;
@@ -80,6 +81,7 @@ void draw() {
     featureUsed = Feature.FIND_LINES;
   } else if (changed.equals("backgroundSubtraction")) {
     featureUsed = Feature.BACKGROUND_SUBTRACTION;
+    backgroundSubtractInit = false;
   } else if (changed.equals("colorChannels")) {
     featureUsed = Feature.COLOR_CHANNELS;
   }
@@ -96,8 +98,10 @@ void draw() {
   } else if (featureUsed == Feature.IMAGE_FILTER) {
     if (useCamera) {
       opencv.loadImage(video);
+      opencv.gray();
     } else {
       opencv.loadImage(image);
+      opencv.gray();
     }
     filterImage(brcValue("filter"));
   } else if (featureUsed == Feature.FIND_CONTOURS) {
@@ -122,21 +126,30 @@ void draw() {
     }
     findLines(int(brcValue("findLinesThreshold")), int(brcValue("findLinesMinLength")), int(brcValue("findLinesMaxLineGap")));
   } else if (featureUsed == Feature.BACKGROUND_SUBTRACTION) {
-    if (brcValue("mediaType").equals("movie")) {
-      Movie = new Movie(this, brcValue("movie") + ".mov");
-      opencv = new OpenCV(this, width,height);
-      opencv.startBackgroundSubtraction(5, 3, 0.5);
-      Movie.loop();
-      Movie.play();
-      backgroundSubtraction(2);
-    } else if (brcValue("mediaType").equals("camera")) {
-      opencv = new OpenCV(this,width,height);
-      opencv.startBackgroundSubtraction(5, 3, 0.5);
+    if (brcValue("imageSource").equals("M")) {
+      if (!backgroundSubtractInit) {
+        Movie = new Movie(this, brcValue("movie") + ".mov");
+        opencv = new OpenCV(this, width,height);
+        opencv.startBackgroundSubtraction(5, 3, 0.5);
+        Movie.loop();
+        Movie.play();
+        backgroundSubtractInit = true;
+      }
+      backgroundSubtraction(1);
+    } else if (brcValue("imageSource").equals("C")) {
+      if (!backgroundSubtractInit) {
+        opencv = new OpenCV(this,width,height);
+        opencv.startBackgroundSubtraction(5, 3, 0.5);
+        backgroundSubtractInit = true;
+      }
       backgroundSubtraction(0);
     } else {
-      opencv = new OpenCV(this,width,height);
-      opencv.startBackgroundSubtraction(5, 3, 0.5);
-      backgroundSubtraction(1);
+      if (!backgroundSubtractInit) {
+        opencv = new OpenCV(this,width,height);
+        opencv.startBackgroundSubtraction(5, 3, 0.5);
+        backgroundSubtractInit = true;
+      }
+      backgroundSubtraction(2);
     }
   } else if (featureUsed == Feature.COLOR_CHANNELS) {
     if (useCamera) {

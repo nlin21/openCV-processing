@@ -77,10 +77,10 @@ blurValue,VALUE,50
 
 TYPE,RANGE,adaptiveBlockSize
 adaptiveBlockSize,LABEL,Adaptive Block Size
-adaptiveBlockSize,MIN,1
+adaptiveBlockSize,MIN,3
 adaptiveBlockSize,MAX,255
-adaptiveBlockSize,STEP,1
-adaptiveBlockSize,VALUE,50
+adaptiveBlockSize,STEP,2
+adaptiveBlockSize,VALUE,51
 
 TYPE,RANGE,adaptiveConstant
 adaptiveConstant,LABEL,Adaptive Constant
@@ -160,12 +160,6 @@ TYPE,DROPDOWN,movie
 movie,LABEL,Movie Type
 movie,OPTION,street,street movie
 movie,OPTION,sampleMovie,Sample Movie
-
-TYPE,DROPDOWN,mediaType
-mediaType,LABEL,Media Type
-mediaType,OPTION,movie,Movie,SELECTED
-mediaType,OPTION,camera,Camera
-mediaType,OPTION,image,Image
 
 TYPE,BUTTON,backgroundSubtraction
 backgroundSubtraction,LABEL,Background Subtration
