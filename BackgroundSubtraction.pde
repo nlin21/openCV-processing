@@ -1,5 +1,11 @@
 void backgroundSubtraction() {
-  image(video, 0, 0);  
+  try{
+    image(video, 0, 0);  
+  } catch(Exception NullPointerException) {
+    System.out.println("Must enable camera");
+    return;
+  }
+  
   opencv.loadImage(video);  
 
   opencv.updateBackground();
